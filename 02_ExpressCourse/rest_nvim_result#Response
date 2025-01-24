@@ -1,0 +1,7 @@
+### index#1
+POST http://localhost:3000/api/courses/programing HTTP/1.1
+HTTP/1.1 200 OK
+
+# @_RES (formatted)
+[{"id":1,"title":"learn basic python","language":"python","views":1000,"level":"begin"},{"id":2,"title":"learn intermediate python","language":"python","views":5000,"level":"intermediate"},{"id":3,"title":"learn advance javascript","language":"javascript","views":1000,"level":"advance"},{"id":4,"title":"Node.js","language":"JavaScript","views":554515,"level":"Intermediate"}]
+# @_END
