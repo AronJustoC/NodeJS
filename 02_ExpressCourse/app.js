@@ -3,6 +3,13 @@ const app = express();
 
 const { infoCourses } = require('./courses');
 
+//Routers
+const programingRouter = express.Router(); //crea el router
+app.use('/api/courses/programing', programingRouter); //usa el router asignandole una ruta
+
+const mathematicsRouter = express.Router();
+app.use('/api/courses/mathematics', mathematicsRouter);
+
 //Routing - Direccionamiento o enrutamiento
 
 app.get('/', (req, res) => {
@@ -13,15 +20,15 @@ app.get('/api/courses', (req, res) => {
   res.send(JSON.stringify(infoCourses));
 });
 
-app.get('/api/courses/programing', (req, res) => {
+programingRouter.get('/', (req, res) => {
   res.send(JSON.stringify(infoCourses.programing));
 });
 
-app.get('/api/courses/mathematics', (req, res) => {
+mathematicsRouter.get('/', (req, res) => {
   res.send(JSON.stringify(infoCourses.mathematics));
 });
 
-app.get('/api/courses/programing/:language', (req, res) => {
+programingRouter.get('/:language', (req, res) => {
   const language = req.params.language;
   const result = infoCourses.programing.filter(course => course.language === language);
 
@@ -30,13 +37,13 @@ app.get('/api/courses/programing/:language', (req, res) => {
   }
 
   if (req.query.order === 'views') {
-    return res.send(JSON.stringify(result.sort((a, b) => b.views - a.views)));
+    return res.send(JSON.stringify(result.sort((a, b) => b.views - a.views)));//Ordena de mayor a menor y para menor a mayor sería a.views - b.views-
   }
 
   res.send(JSON.stringify(result));
 });
 
-app.get('/api/courses/programing/:language/:level', (req, res) => {
+programingRouter.get('/:language/:level', (req, res) => {
   const language = req.params.language;
   const level = req.params.level;
   const result = infoCourses.programing.filter(course => course.language === language && course.level === level);
@@ -48,7 +55,7 @@ app.get('/api/courses/programing/:language/:level', (req, res) => {
   res.send(JSON.stringify(result));
 });
 
-app.get('/api/courses/mathematics/:topics', (req, res) => {
+mathematicsRouter.get('/:topics', (req, res) => {
   const topics = req.params.topics;
   const result = infoCourses.mathematics.filter(course => course.topics === topics);
 
