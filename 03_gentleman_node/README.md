@@ -24,8 +24,8 @@ bunx eslint --init
 ## Instalamos las depemdecias para desarrollo que se necesitan para el proyecto
 
 ```bash
-bun add -D @eslint/js @types/node @typescript-eslint/eslint-plugin @typescri
-pt-eslint/parser eslint-config-airbnb-base eslint-config-airbnb-base-typescript
+bun add -D @eslint/js @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-base eslint-config-airbnb-base-typescript eslint-plugin-unused-imports
+ 
 ```
 
 ## Instalamos los paquetes de tipo de datos y plugins de eslint
