@@ -31,5 +31,5 @@ bun add -D @eslint/js @types/node @typescript-eslint/eslint-plugin @typescript-e
 ## Instalamos los paquetes de tipo de datos y plugins de eslint
 
 ```bash
-bun add -D eslint-plugin-import eslint-plugin @types/bcrypt @types/cors @types/node @types/jsonwebtoken
+bun add -D eslint-plugin-import eslint-plugin @types/bcrypt @types/cors @types/node @types/jsonwebtoken @types/jsonwebtoken @types/valibot
 ```
