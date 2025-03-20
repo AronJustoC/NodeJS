@@ -6,7 +6,6 @@ import unusedImports from "eslint-plugin-unused-imports";
 import airbnbBase from "eslint-config-airbnb-base";
 import airbnbBaseTypescript from "eslint-config-airbnb-base-typescript";
 
-
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   js.configs.recommended,
@@ -14,19 +13,19 @@ export default [
     files: ["**/*.{js,mjs,cjs,ts}"],
     languageOptions: {
       parser: tsParser,
-      languageOptions: {
+      globals: {
         ...globals.browser,
-        ...globals.node // Me permite usar process.env 
-      }
+        ...globals.node, // Me permite usar process.env 
+      },
     },
     plugins: {
       "@typescript-eslint": tseslint,
-      "unused-imports": unusedImports
+      "unused-imports": unusedImports,
     },
     rules: {
       ...airbnbBase.rules,
       ...airbnbBaseTypescript.rules,
-      "unused-vars": "off",
+      "no-unused-vars": "off", // Apaga la regla de ESLint nativa
       "unused-imports/no-unused-vars": [
         "warn",
         {
@@ -34,7 +33,8 @@ export default [
           varsIgnorePattern: "^_",
           args: "after-used",
           argsIgnorePattern: "^_",
-          coughtErrorsIgnorePattern: "^_",
+          caughtErrors: "all", // Corregí "caughtErrorsIgnorePattern"
+          caughtErrorsIgnorePattern: "^_",
         },
       ],
     },
@@ -44,6 +44,7 @@ export default [
           extensions: [".js", ".jsx", ".ts", ".tsx"],
         },
       },
-    }
+    },
   },
 ];
+

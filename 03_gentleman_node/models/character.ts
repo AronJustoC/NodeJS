@@ -1,7 +1,7 @@
 import { minLength, object, pipe, string, type InferInput } from "valibot";
 
 const nameSchema = pipe(string(), minLength(6));
-const ageSchema = pipe(string(), minLength(6));
+const ageSchema = pipe(string(), minLength(1));
 
 export const characterSchema = object({
   name: nameSchema,
